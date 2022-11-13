@@ -1,8 +1,5 @@
-
-interface IPlayers {
-    "x player": string;
-    "o player": string;
-}
+import IPlayers from "./interfaces";
+import {render} from "./render";
 
 const players: IPlayers = {
     "x player": "x",
@@ -95,30 +92,7 @@ const checkCondition = (cellX: number, cellY: number, field: string[][]) => {
     return false;
 };
 
-const render = () => {
-    // @ts-ignore
-    field.innerHTML = "";
-    // @ts-ignore
-    field.setAttribute(
-        "style",
-        `grid-template-columns: repeat(${fieldSize}, 50px)`
-    );
-    for (let i = 0; i < fieldSize * fieldSize; i++) {
-        const cell = document.createElement("div");
-        cell.classList.add("cell");
-        // @ts-ignore
-        field.appendChild(cell);
-    }
-    // @ts-ignore
-    Array.from(field.children).forEach((el, i) => {
-        el.setAttribute("cellX", String(i % (fieldSize)));
-        el.setAttribute("cellY", String(Math.floor(i / (fieldSize))));
-        el.innerHTML = cellsArray?.[Math.floor(i / fieldSize)]?.[i % fieldSize] ?? null;
-    });
 
-
-
-};
 
 // @ts-ignore
 field.addEventListener("click", (e) => {
@@ -150,7 +124,7 @@ field.addEventListener("click", (e) => {
 
 });
 
-render();
+render(field, fieldSize, cellsArray);
 
 // @ts-ignore
 reloadGame.onclick = () => {
@@ -165,6 +139,6 @@ reloadGame.onclick = () => {
     currPlayerText.innerHTML = "";
     // @ts-ignore
     winnerText.innerHTML = "";
-    render();
+    render(field, fieldSize, cellsArray);
 };
 
