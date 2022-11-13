@@ -1,0 +1,49 @@
+body {
+    font-family: sans-serif;
+    background-color: #1f1f1f;
+}
+.field {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    gap: 4px;
+}
+.cell {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    cursor: pointer;
+    font-size: 60px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    box-shadow: orange 0 0 5px;
+    user-select: none;
+}
+.currPlayer {
+    color: orange;
+}
+.winner {
+    background-color: orange;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    width: 200px;
+}
+.pressed {
+    user-select: none;
+}
+.reload {
+    background: transparent;
+    color: orange;
+    border-radius: 10px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.reload:active {
+    background: #fff;
+}
